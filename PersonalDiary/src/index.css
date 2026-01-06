@@ -1,0 +1,24 @@
+@import "tailwindcss";
+@plugin "daisyui";
+
+@layer base {
+  body {
+    @apply bg-base-100 text-base-content;
+  }
+
+  h1 {
+    @apply text-3xl font-bold mt-6 mb-4;
+  }
+
+  h2 {
+    @apply text-2xl font-semibold mt-5 mb-3;
+  }
+
+  p {
+    @apply mb-4 leading-relaxed;
+  }
+
+  a {
+    @apply text-primary hover:underline;
+  }
+}
