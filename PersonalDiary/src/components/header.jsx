@@ -9,7 +9,7 @@ export default function Header({ onNewEntryClick }) {
         <div className="navbar-center hidden lg:flex"></div>
         <div className="navbar-end">
           <a className="btn" onClick={onNewEntryClick}>
-            <span class="plus-icon text-xl">&#43;</span> New Entry
+            <span className="plus-icon text-xl">&#43;</span> New Entry
           </a>
         </div>
       </div>

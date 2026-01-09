@@ -24,9 +24,7 @@ export default function AddEntryModal() {
         ></textarea>
         <div className="flex flex-row gap-2 mx-auto">
           <button className="btn btn-active w-20 ">cancel</button>
-          <button className="btn btn-soft btn-primary w-20 text-xl">
-            save
-          </button>
+          <button className="btn btn-soft btn-primary w-20 ">save</button>
         </div>
       </fieldset>
     </>
