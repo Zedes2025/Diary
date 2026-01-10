@@ -1,4 +1,4 @@
-export default function AddEntryModal() {
+export default function AddEntryModal({ onClose, entry }) {
   return (
     <>
       <fieldset className="mt-4 m-auto fieldset bg-blue-100 border-base-300 rounded-box w-xs border p-4">
@@ -12,7 +12,7 @@ export default function AddEntryModal() {
           placeholder="Swiming in the river"
         />
         <label className="label">
-          <Date></Date>
+          {entry ? new Date(entry.date).toLocaleDateString() : "1/1/2024"}
         </label>
         <input type="date" className="input" />
         <label className="label">Picture</label>
@@ -23,8 +23,12 @@ export default function AddEntryModal() {
           placeholder="Today I went swimming in the river..."
         ></textarea>
         <div className="flex flex-row gap-2 mx-auto">
-          <button className="btn btn-active w-20 ">cancel</button>
-          <button className="btn btn-soft btn-primary w-20 ">save</button>
+          <button className="btn btn-active w-20 " onClick={onClose}>
+            cancel
+          </button>
+          <button className="btn btn-soft btn-primary w-20 OnClick={}">
+            save
+          </button>
         </div>
       </fieldset>
     </>
