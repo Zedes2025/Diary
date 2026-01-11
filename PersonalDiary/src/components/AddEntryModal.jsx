@@ -26,7 +26,7 @@ export default function AddEntryModal({ onClose, entry, onSave }) {
 
     console.log("cleared", { title, content, date, url });
 
-    //onClose();
+    onClose();
   };
 
   return (
@@ -63,6 +63,7 @@ export default function AddEntryModal({ onClose, entry, onSave }) {
           className="input"
           value={url}
           onChange={(e) => setUrl(e.target.value)}
+          required
         />
         <label className="label">Content</label>
         <textarea
@@ -74,7 +75,11 @@ export default function AddEntryModal({ onClose, entry, onSave }) {
           required
         ></textarea>
         <div className="flex flex-row gap-2 mx-auto">
-          <button className="btn btn-active w-20 " onClick={onClose}>
+          <button
+            className="btn btn-active w-20 "
+            type="button"
+            onClick={onClose}
+          >
             cancel
           </button>
 

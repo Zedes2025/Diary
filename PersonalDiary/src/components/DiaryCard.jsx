@@ -11,8 +11,8 @@ export default function DiaryCard({
       <figure className="px-10 pt-10">
         <img
           src={image}
-          alt="Shoes"
-          className="rounded-xl h-40 w-full object-cover"
+          alt="{title}"
+          className="rounded-xl h-80 w-full object-cover"
         />
       </figure>
       <div className="card-body items-center text-center">

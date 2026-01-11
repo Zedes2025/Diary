@@ -16,13 +16,13 @@ function App() {
   const OpenCard = (entry) => {
     setSelectedCard(entry);
   };
-
   const [entries, setEntries] = useState(
-    () => JSON.parse(localStorage.getItem("diaryEntries")) || []
+    () => JSON.parse(localStorage.getItem("entries")) || []
   );
 
   const handleSave = (newEntry) => {
-    setEntries([...entries, newEntry]);
+    const entryWithId = { ...newEntry, id: Date.now() };
+    setEntries((prev) => [...prev, entryWithId]);
   };
 
   useEffect(() => {
@@ -33,11 +33,14 @@ function App() {
     <>
       <Header onNewEntryClick={OpenModal} />
       {isModalOpen && (
-        <AddEntryModal onClose={CloseModal} onSave={handleSave} />
+        <div className="modal modal-open">
+          <AddEntryModal onClose={CloseModal} onSave={handleSave} />{" "}
+        </div>
       )}
-      <div className="flex flex-row gap-2 m-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 m-4 ">
         {entries.map((entry) => (
           <DiaryCard
+            key={entry.id}
             onClickCard={() => OpenCard(entry)}
             title={entry.title}
             date={entry.date}
@@ -48,7 +51,7 @@ function App() {
       </div>
 
       {selectedCard && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black/50 z-50">
+        <div className="fixed inset-0 flex items-center justify-center bg-black/50 z-30">
           <ViewSelectedCard
             entry={selectedCard}
             onClose={() => setSelectedCard(null)}
