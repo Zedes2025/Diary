@@ -10,7 +10,7 @@ export default function ViewSelectedCard({ entry, onClose }) {
         </div>
 
         <figure className="px-10 pt-10">
-          <img src={entry.image} alt="Shoes" className="rounded-xl" />
+          <img src={entry.url} alt="Shoes" className="rounded-xl" />
         </figure>
         <div className="card-body items-center text-center">
           <h2 className="card-title">{entry.title}</h2>

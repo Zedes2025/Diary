@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Header from "./components/header.jsx";
 import AddEntryModal from "./components/AddEntryModal.jsx";
 import DiaryCard from "./components/DiaryCard.jsx";
@@ -17,17 +17,31 @@ function App() {
     setSelectedCard(entry);
   };
 
+  const [entries, setEntries] = useState(
+    () => JSON.parse(localStorage.getItem("diaryEntries")) || []
+  );
+
+  const handleSave = (newEntry) => {
+    setEntries([...entries, newEntry]);
+  };
+
+  useEffect(() => {
+    localStorage.setItem("entries", JSON.stringify(entries));
+  }, [entries]);
+
   return (
     <>
       <Header onNewEntryClick={OpenModal} />
-      {isModalOpen && <AddEntryModal onClose={CloseModal} />}
+      {isModalOpen && (
+        <AddEntryModal onClose={CloseModal} onSave={handleSave} />
+      )}
       <div className="flex flex-row gap-2 m-4">
-        {FakeEntries.map((entry) => (
+        {entries.map((entry) => (
           <DiaryCard
             onClickCard={() => OpenCard(entry)}
             title={entry.title}
             date={entry.date}
-            image={entry.image}
+            image={entry.url}
             content={entry.content}
           />
         ))}
