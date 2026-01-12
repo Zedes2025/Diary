@@ -6,7 +6,7 @@ export default function DiaryCard({
   onClickCard,
 }) {
   return (
-    <div className="card bg-base-100 w-96 shadow-sm " onClick={onClickCard}>
+    <div className="card bg-stone-100 w-96 shadow-sm " onClick={onClickCard}>
       <div className="card-title justify-center mt-6 mb-0">{date}</div>
       <figure className="px-10 pt-10">
         <img

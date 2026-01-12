@@ -33,7 +33,7 @@ export default function AddEntryModal({ onClose, entry, onSave }) {
     <>
       <form
         onSubmit={handleSubmit}
-        className="mt-4 m-auto fieldset bg-blue-100 border-base-300 rounded-box w-xs border p-4"
+        className="mt-4 m-auto fieldset bg-blue-100 border-base-300 rounded-box w-150 border p-4"
       >
         <legend className="text-lg font-bold mx-auto px-2 text-blue-200 bg-blue-900 rounded p-2">
           Add new entry
@@ -41,26 +41,26 @@ export default function AddEntryModal({ onClose, entry, onSave }) {
         <label className="label">Title</label>
         <input
           type="input"
-          className="input"
+          className="input w-auto"
           placeholder="Swiming in the river"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
           required
         />
         <label className="label">
-          {entry ? new Date(entry.date).toLocaleDateString() : "1/1/2024"}
+          {entry ? new Date(entry.date).toLocaleDateString() : "Date:"}
         </label>
         <input
           type="date"
-          className="input"
+          className="input w-auto"
           value={date}
           onChange={(e) => setDate(e.target.value)}
           required
         />
-        <label className="url">Picture URL</label>
+        <label className="url text-gray-500">Picture URL</label>
         <input
           type="url"
-          className="input"
+          className="input w-auto"
           value={url}
           onChange={(e) => setUrl(e.target.value)}
           required
@@ -68,7 +68,7 @@ export default function AddEntryModal({ onClose, entry, onSave }) {
         <label className="label">Content</label>
         <textarea
           type="text"
-          className="textarea textarea-bordered h-24"
+          className="textarea textarea-bordered h-24 w-auto h-50"
           placeholder="Today I went swimming in the river..."
           value={content}
           onChange={(e) => setContent(e.target.value)}
@@ -76,7 +76,7 @@ export default function AddEntryModal({ onClose, entry, onSave }) {
         ></textarea>
         <div className="flex flex-row gap-2 mx-auto">
           <button
-            className="btn btn-active w-20 "
+            className="btn btn-active w-20 p-4 text-lg"
             type="button"
             onClick={onClose}
           >
@@ -85,7 +85,10 @@ export default function AddEntryModal({ onClose, entry, onSave }) {
 
           {/* {error && <p className="text-red-500 text-center">{error}</p>} */}
 
-          <button type="submit" className="btn btn-soft btn-primary w-20">
+          <button
+            type="submit"
+            className="btn btn-soft btn-primary w-20 p-4 text-lg"
+          >
             save
           </button>
         </div>

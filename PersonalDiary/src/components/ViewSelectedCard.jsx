@@ -1,7 +1,7 @@
 export default function ViewSelectedCard({ entry, onClose }) {
   return (
     <>
-      <div className="card bg-base-100 w-150 shadow-sm max-h-[80vh] overflow-auto relative cursor-pointer max-h-[80vh]">
+      <div className="card bg-stone-200 w-150 shadow-sm max-h-[80vh] overflow-auto relative cursor-pointer max-h-[80vh]">
         <div className="card-title justify-center mt-6 mb-0">{entry.date} </div>
         <button className="btn absolute top-3 right-5 " onClick={onClose}>
           X
