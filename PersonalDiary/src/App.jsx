@@ -21,6 +21,14 @@ function App() {
   );
 
   const handleSave = (newEntry) => {
+    //prevent dupplicate dates
+    const exists = entries.some((e) => e.date === newEntry.date);
+
+    if (exists) {
+      alert("You already wrote for this day");
+      return;
+    }
+
     const entryWithId = { ...newEntry, id: Date.now() };
     setEntries((prev) => [...prev, entryWithId]);
   };
@@ -28,6 +36,11 @@ function App() {
   useEffect(() => {
     localStorage.setItem("entries", JSON.stringify(entries));
   }, [entries]);
+
+  const dateNumbersOnly = (dateStr) => {
+    const [d, m, y] = dateStr.split("/");
+    return `${y}${m.padStart(2, "0")}${d.padStart(2, "0")}`;
+  };
 
   return (
     <>
@@ -37,7 +50,7 @@ function App() {
           <AddEntryModal onClose={CloseModal} onSave={handleSave} />{" "}
         </div>
       )}
-      <div className=" m-8  grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-4 gap-y-6 justify-center">
+      <div className=" m-6 pb-6 grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-4 gap-y-6 justify-center">
         {entries.map((entry) => (
           <DiaryCard
             key={entry.id}
